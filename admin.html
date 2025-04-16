@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - CyberBeast Rentals</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #cc0000;
+        }
+
+        /* Admin Section */
+        .admin-section {
+            padding: 50px 0;
+        }
+
+        .admin-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        .admin-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .admin-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* Submissions Table */
+        .submissions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #222;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .submissions-table th,
+        .submissions-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .submissions-table th {
+            background-color: #111;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .submissions-table tr:hover {
+            background-color: #2a2a2a;
+        }
+
+        .empty-state {
+            padding: 30px;
+            text-align: center;
+            color: #888;
+        }
+
+        /* Login Form */
+        .login-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #cc0000;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #aa0000;
+        }
+
+        .error-message {
+            color: #ff0000;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: #888;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Cyber<span>Beast</span></div>
+            <a href="index.html" class="btn">Back to Site</a>
+        </div>
+    </header>
+
+    <!-- Admin Section -->
+    <section class="admin-section">
+        <div class="container">
+            <h1 class="admin-title">Admin Dashboard</h1>
+
+            <!-- Login Form (shown first) -->
+            <div class="login-form" id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <button type="button" class="btn" id="login-btn">Login</button>
+                <p class="error-message hidden" id="login-error">Invalid username or password</p>
+            </div>
+
+            <!-- Dashboard (shown after login) -->
+            <div class="admin-dashboard hidden" id="admin-dashboard">
+                <div class="admin-card">
+                    <h2>Recent Submissions</h2>
+                    <p>View all submissions from your CyberBeast rental inquiries.</p>
+
+                    <table class="submissions-table" id="submissions-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Message</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="submissions-body">
+                            <!-- Submissions will be loaded here -->
+                        </tbody>
+                    </table>
+
+                    <div class="empty-state hidden" id="no-submissions">
+                        <p>No submissions found.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2025 CyberBeast Rentals. All rights reserved. Tesla and Cybertruck are trademarks
+                of Tesla, Inc.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple admin authentication 
+        // IMPORTANT: In a real application, use proper authentication via a server
+        // This is for demonstration purposes only
+        const adminUser = {
+            username: 'admin', // CHANGE THIS to your preferred username
+            password: 'cyberbeast2025' // CHANGE THIS to your preferred password
+        };
+
+        const loginForm = document.getElementById('login-form');
+        const loginBtn = document.getElementById('login-btn');
+        const loginError = document.getElementById('login-error');
+        const dashboard = document.getElementById('admin-dashboard');
+        const submissionsTable = document.getElementById('submissions-table');
+        const submissionsBody = document.getElementById('submissions-body');
+        const noSubmissions = document.getElementById('no-submissions');
+
+        // Login functionality
+        loginBtn.addEventListener('click', function () {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === adminUser.username && password === adminUser.password) {
+                loginForm.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                loadSubmissions();
+            } else {
+                loginError.classList.remove('hidden');
+            }
+        });
+
+        // Function to load submissions from localStorage
+        function loadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('cyberBeastSubmissions') || '[]');
+
+            if (submissions.length === 0) {
+                submissionsTable.classList.add('hidden');
+                noSubmissions.classList.remove('hidden');
+                return;
+            }
+
+            // Sort submissions by timestamp (newest first)
+            submissions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            // Clear existing rows
+            submissionsBody.innerHTML = '';
+
+            // Add submissions to table
+            submissions.forEach(submission => {
+                const row = document.createElement('tr');
+
+                // Format timestamp
+                const date = new Date(submission.timestamp);
+                const formattedDate = `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+                row.innerHTML = `
+                    <td>${escapeHTML(submission.name)}</td>
+                    <td>${escapeHTML(submission.email)}</td>
+                    <td>${escapeHTML(submission.phone)}</td>
+                    <td>${escapeHTML(submission.startDate || submission.dates?.split(' - ')[0] || '')}</td>
+                    <td>${escapeHTML(submission.endDate || submission.dates?.split(' - ')[1] || '')}</td>
+                    <td>${escapeHTML(submission.message || '')}</td>
+                    <td>${formattedDate}</td>
+                `;
+
+                submissionsBody.appendChild(row);
+            });
+        }
+
+        // Helper function to prevent XSS
+        function escapeHTML(str) {
+            if (!str) return '';
+            return str
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        // Check if user is already authenticated
+        if (sessionStorage.getItem('adminAuthenticated') === 'true') {
+            loginForm.classList.add('hidden');
+            dashboard.classList.remove('hidden');
+            loadSubmissions();
+        }
+    </script>
+</body>
+
+</html>
