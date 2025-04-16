@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberBeast Rentals - Experience the Future</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #cc0000;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/cybertruck-hero.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #cc0000;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #aa0000;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-img {
+            height: 200px;
+            width: 100%;
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-content {
+            padding: 20px;
+        }
+
+        .feature-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 80px 0;
+            background-color: #0a0a0a;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 80px 0;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #222;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: #0a0a0a;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Cyber<span>Beast</span></div>
+            <div class="nav-links">
+                <!-- Mobile menu button would go here -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Experience the Future</h1>
+            <p>Rent the revolutionary Tesla Cybertruck and turn heads wherever you go. Limited availability - book your
+                adventure today!</p>
+            <a href="#contact" class="btn">Reserve Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Rent The CyberBeast</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-img">
+                        <img src="images/cybertruck-power.jpg" alt="Cybertruck power">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Unmatched Power</h3>
+                        <p>Experience the raw power of the tri-motor AWD system with 0-60 mph in under 3 seconds.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img">
+                        <img src="images/cybertruck-design.jpg" alt="Cybertruck design">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Head-Turning Design</h3>
+                        <p>The exoskeleton body and ultra-hard stainless steel construction makes this rental truly
+                            unique.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img">
+                        <img src="images/cybertruck-interior.jpg" alt="Cybertruck interior">
+                    </div>
+                    <div class="feature-content">
+                        <h3>Futuristic Interior</h3>
+                        <p>Enjoy the minimalist interior, 17" touchscreen, and premium audio system during your rental.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/cybertruck-front.jpg" alt="Cybertruck front view">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cybertruck-side.jpg" alt="Cybertruck side view">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cybertruck-rear.jpg" alt="Cybertruck rear view">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cybertruck-interior-full.jpg" alt="Cybertruck interior">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cybertruck-bed.jpg" alt="Cybertruck bed">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cybertruck-sunset.jpg" alt="Cybertruck at sunset">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <div class="video-container">
+                <!-- Replace this with actual YouTube embed code -->
+                <div class="video-placeholder">
+                    [Cybertruck Demo Video - Replace with actual video embed]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Reserve Your Experience</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Ready to turn heads?</h3>
+                    <p>Fill out the form to check availability and rates. Limited slots available - book early to avoid
+                        disappointment.</p>
+                    <p>We'll contact you within 24 hours to confirm your reservation details.</p>
+                </div>
+                <div class="contact-form">
+                    <form id="reservation-form" action="https://formspree.io/f/xgvabadl" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required
+                                pattern="[A-Za-z\s]+" title="Please enter a valid name (letters and spaces only)">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required
+                                pattern="[\d\s\(\)\-\+]+" title="Please enter a valid phone number">
+                        </div>
+                        <div class="form-group">
+                            <label for="start-date">Start Date</label>
+                            <input type="date" id="start-date" name="start-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="end-date">End Date</label>
+                            <input type="date" id="end-date" name="end-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" name="message"
+                                placeholder="Tell us about your plans, questions, or special requests..."></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="New CyberBeast Rental Request">
+                        <input type="hidden" name="_next"
+                            value="https://stephane234.github.io/CyberTruck_rental/thanks.html">
+                        <input type="hidden" name="_format" value="plain">
+                        <button type="submit" class="btn">Send Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2025 CyberBeast Rentals. All rights reserved. Tesla and Cybertruck are trademarks
+                of Tesla, Inc.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Check if form was submitted but redirect failed
+        document.addEventListener('DOMContentLoaded', function () {
+            if (sessionStorage.getItem('formSubmitted') === 'true') {
+                // Clear the flag
+                sessionStorage.removeItem('formSubmitted');
+                // Redirect to thank you page
+                window.location.href = 'thanks.html';
+            }
+        });
+
+        // Form validation and submission handling
+        document.getElementById('reservation-form').addEventListener('submit', function (e) {
+            // Custom validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            // Basic validation
+            if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || startDate.trim() === '' || endDate.trim() === '') {
+                e.preventDefault();
+                alert('Please fill out all required fields.');
+                return false;
+            }
+
+            // Name validation
+            if (!/^[A-Za-z\s]+$/.test(name)) {
+                e.preventDefault();
+                alert('Please enter a valid name (letters and spaces only).');
+                return false;
+            }
+
+            // Email validation
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                e.preventDefault();
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+            // Phone validation
+            if (!/^[\d\s\(\)\-\+]+$/.test(phone)) {
+                e.preventDefault();
+                alert('Please enter a valid phone number.');
+                return false;
+            }
+
+            // Date range validation
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+
+            if (start > end) {
+                e.preventDefault();
+                alert('End date must be after start date.');
+                return false;
+            }
+
+            // Add combined date range to a hidden field for Formspree
+            const formattedDates = `${formatDate(start)} - ${formatDate(end)}`;
+
+            // Create hidden field for combined dates if it doesn't exist
+            let combinedDatesField = document.getElementById('combined-dates');
+            if (!combinedDatesField) {
+                combinedDatesField = document.createElement('input');
+                combinedDatesField.type = 'hidden';
+                combinedDatesField.id = 'combined-dates';
+                combinedDatesField.name = 'dates';
+                this.appendChild(combinedDatesField);
+            }
+
+            combinedDatesField.value = formattedDates;
+
+            // Save to localStorage for backup (in case form submission fails)
+            const formData = {
+                name: name,
+                email: email,
+                phone: phone,
+                startDate: startDate,
+                endDate: endDate,
+                dates: formattedDates,
+                message: document.getElementById('message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Store in localStorage
+            const submissions = JSON.parse(localStorage.getItem('cyberBeastSubmissions') || '[]');
+            submissions.push(formData);
+            localStorage.setItem('cyberBeastSubmissions', JSON.stringify(submissions));
+
+            // Set a session flag to trigger a redirect if Formspree's redirect fails
+            sessionStorage.setItem('formSubmitted', 'true');
+
+            // Only run the following if using the default form handling (no Formspree)
+            if (!this.action || this.action === '') {
+                e.preventDefault();
+                alert('Thank you for your interest! We will contact you soon to confirm your Cybertruck rental.');
+                this.reset();
+            }
+        });
+
+        // Helper function to format date as MM/DD/YYYY
+        function formatDate(date) {
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${month}/${day}/${year}`;
+        }
+
+        // Function to view submissions (add to admin page or console)
+        function viewSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('cyberBeastSubmissions') || '[]');
+            console.table(submissions);
+            return submissions;
+        }
+    </script>
+</body>
+
+</html>
