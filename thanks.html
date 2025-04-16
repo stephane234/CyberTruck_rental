@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - CyberBeast Rentals</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #0f0f0f;
+            color: #f5f5f5;
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #cc0000;
+        }
+
+        /* Thank You Content */
+        .thank-you-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .thank-you-container {
+            max-width: 800px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .thank-you-icon {
+            font-size: 80px;
+            color: #cc0000;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .thank-you-message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #cc0000;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #aa0000;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">Cyber<span>Beast</span></div>
+        </div>
+    </header>
+
+    <!-- Thank You Section -->
+    <section class="thank-you-section">
+        <div class="thank-you-container">
+            <div class="thank-you-icon">✓</div>
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-message">Your CyberBeast rental request has been received. We're excited about your
+                interest and will contact you within 24 hours to confirm your reservation details.</p>
+            <p>In the meantime, feel free to contact us directly if you have any urgent questions.</p>
+            <a href="index.html" class="btn">Return to Home</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2025 CyberBeast Rentals. All rights reserved. Tesla and Cybertruck are trademarks
+                of Tesla, Inc.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
